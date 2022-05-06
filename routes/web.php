@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::resource('categories', 'App\http\Controllers\CategoriesController');
+Route::get('categories', 'App\http\Controllers\CategoriesController@index');
+Route::post('categories', 'App\http\Controllers\CategoriesController@store')->middleware('ValidateData');
+Route::put('categories/{id}', 'App\http\Controllers\CategoriesController@update')->middleware('ValidateData');
+Route::delete('categories/{id}', 'App\http\Controllers\CategoriesController@destroy');
