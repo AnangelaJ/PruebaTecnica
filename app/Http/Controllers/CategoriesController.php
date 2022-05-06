@@ -20,6 +20,13 @@ class CategoriesController extends Controller
         return Categories::query()->select(['id', 'name', 'amount'])->where('active', '=', 1)->get()->toJson();
     }
 
+    public function show($id)
+    {
+        /*Sentencia para retornar solo los campos indicados de los registros activos en formato JSON*/
+
+        return Categories::query()->select(['id', 'name', 'amount'])->where('id', '=', $id)->get()->toJson();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

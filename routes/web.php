@@ -18,7 +18,10 @@ Route::get('/', function () {
 });
 
 // Route::resource('categories', 'App\http\Controllers\CategoriesController');
-Route::get('categories', 'App\http\Controllers\CategoriesController@index');
-Route::post('categories', 'App\http\Controllers\CategoriesController@store')->middleware('ValidateData');
-Route::put('categories/{id}', 'App\http\Controllers\CategoriesController@update')->middleware('ValidateData');
-Route::delete('categories/{id}', 'App\http\Controllers\CategoriesController@destroy');
+// Route::group(['middleware' => ['cors']], function(){
+    Route::get('categories', 'App\http\Controllers\CategoriesController@index');
+    Route::get('categories/{id}', 'App\http\Controllers\CategoriesController@show');
+    Route::post('categories', 'App\http\Controllers\CategoriesController@store')->middleware('ValidateData');
+    Route::put('categories/{id}', 'App\http\Controllers\CategoriesController@update')->middleware('ValidateData');
+    Route::delete('categories/{id}', 'App\http\Controllers\CategoriesController@destroy');
+// });
